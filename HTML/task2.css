@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+}
+
+body{
+    background: rgb(222, 222, 222);
+}
+
+li{
+    list-style: none;
+}
+
+.nav{
+    width: 100%;
+    height: 60px;
+    background: #000;
+}
+
+.nav img{
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 20px;
+    float: left;
+}
+
+.nav li{
+    float: right;
+    margin-right: 20px;
+    line-height: 60px;
+}
+
+.nav li a{
+    color: #fff;
+    font-size: 12px;
+}
+
+.nav li a:hover{
+    color: rgb(222, 222, 222);
+}
+
+.article{
+    background: #fff;
+    margin: 20px;
+    margin-bottom: 0;
+    box-shadow: 3px 2px 2px #a1a1a1;
+    border: 1px solid #bfbebe;
+    padding: 30px 20px;
+}
+
+.article h3{
+    font-size: 20px;   
+}
+
+.article h4{
+    font-size: 15px;
+    line-height: 40px;
+    color: #747171;
+}
+
+.article span{
+    font-size: 12px;
+    color: #949494;
+}
+
+.article .space{
+    text-indent: 2em;
+}
+
+.article img{
+    margin: 10px 0;
+}
+
+.article .img{
+    width: 150px;
+    height: 150px;
+    border: 1px solid #949494;
+    text-align: center;
+    margin: 15px 0;
+    margin-left: 40px;
+}
+
+.article .text{
+    margin: 10px;
+    margin-bottom: 0px;
+    width: 130px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.article .img img{
+    width: 130px;
+    height: 100px;
+}
+
+.rank{
+    list-style-type: decimal; 
+    margin: 10px 0;
+    margin-left: 40px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+}
+
+tr:nth-child(1){
+    background: #000;
+}
+
+th{
+    color: #fff;
+}
+
+
+
+
