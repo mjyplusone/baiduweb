@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFE JavaScript Task 05</title>
+    <style type="text/css">
+        li{
+            list-style: none;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: red;
+            color: white;
+            text-align: center;
+            float: left;
+        }
+        ul{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="innum">
+    <button id="leftin">左侧入</button>
+    <button id="rightin">右侧入</button>
+    <button id="leftout">左侧出</button>
+    <button id="rightout">右侧出</button>
+    <button id="sort">排序</button>
+
+    <ul id="outnum"></ul>
+
+    <script type="text/javascript">
+        var innum = document.getElementById('innum');
+        var outnum = document.getElementById('outnum');
+        var leftin = document.getElementById('leftin');
+        var rightin = document.getElementById('rightin');
+        var leftout = document.getElementById('leftout');
+        var rightout = document.getElementById('rightout');
+        var sort = document.getElementById('sort');
+
+        function insert(direction)
+        {
+            if(isNaN(innum.value))
+            {
+                alert("input error!");
+                innum.value = "";
+                innum.focus();
+            }
+            else
+            {
+                if(innum.value < 10 || innum.value > 100)
+                {
+                    alert("not between 10 and 100!");
+                }  
+                else if(outnum.childNodes.length >= 6)
+                {
+                    alert("exceed 6!")
+                }
+                else
+                {
+                    var newli = document.createElement('li');
+                    newli.innerHTML = innum.value;
+                    if(direction === 'left')
+                    {
+                        outnum.insertBefore(newli, outnum.firstChild);
+                        outnum.firstChild.style.height = innum.value + 'px';
+                        outnum.firstChild.style.marginTop = 100 - innum.value + 'px';
+                    }
+                    else if(direction === 'right')
+                    {
+                        outnum.appendChild(newli);
+                        outnum.lastChild.style.height = innum.value + 'px';
+                        outnum.lastChild.style.marginTop = 100 - innum.value + 'px';
+                    }
+                }
+                
+                           
+            }
+        }
+
+        function del(direction)
+        {
+            if(outnum.childNodes.length <= 0)
+            {
+                alert("no number!");
+                return false;
+            }
+            else
+            {
+                if(direction === 'left')
+                {
+                    outnum.removeChild(outnum.firstChild);
+                }
+                else if(direction === 'right')
+                {
+                    outnum.removeChild(outnum.lastChild);
+                }
+            }
+        }
+
+        function delli(node)
+        {
+            outnum.removeChild(node);
+        }
+
+        function resort()
+        {
+            var numlist = new Array;
+            for(var i = 0; i < outnum.childNodes.length; i++)
+            {
+                numlist[i] = outnum.childNodes[i].offsetHeight;
+            }
+            var tmp;
+            var i = 0, j = 0;
+            var maopao = setInterval(function(){
+                if(i < outnum.childNodes.length)
+                {   
+                    if(j < outnum.childNodes.length - i)
+                    {
+                        if(numlist[j] > numlist[j+1])
+                        {
+                            tmp = numlist[j];
+                            numlist[j] = numlist[j+1];
+                            numlist[j+1] = tmp;
+                            outnum.childNodes[j].style.height = numlist[j] + 'px';
+                            outnum.childNodes[j].style.marginTop = 100 - numlist[j] + 'px';
+                            outnum.childNodes[j].innerHTML = numlist[j];
+                            outnum.childNodes[j+1].style.height = numlist[j+1] + 'px';
+                            outnum.childNodes[j+1].style.marginTop = 100 - numlist[j+1] + 'px';
+                            outnum.childNodes[j+1].innerHTML = numlist[j+1];
+                        }
+                        
+                        j++;
+                    }
+                    else
+                    {
+                        i++;
+                        j = 0;
+                    }
+                }
+            }, 1000);
+        }
+
+        leftin.onclick = function(){
+            insert('left');
+        };
+        rightin.onclick = function(){
+            insert('right');
+        };
+        leftout.onclick = function(){
+            del("left");
+        };
+        rightout.onclick = function(){
+            del("right");
+        }
+        outnum.onclick = function(){
+            delli(event.target);
+        }
+        sort.onclick = function(){
+            resort();
+        }
+        
+    </script>
+</body>
+</html>
