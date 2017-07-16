@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFE JavaScript Task 07</title>
+    <style type="text/css">
+        #root, #child2, #child3, #child4{
+            border: 1px solid black;
+            display: flex;
+        } 
+        #root{
+            width: 1200px;
+            height: 400px;
+        }
+        #child2{
+            margin: 50px 30px;
+            flex: 1;
+        }
+        #child3{
+            margin: 50px 30px;
+            flex: 1;
+        }
+        #child4{
+            margin: 30px 10px;
+            flex: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="BST" id="root">
+        <div id="child2">
+            <div id="child3">
+                <div id="child4"></div>
+                <div id="child4"></div>
+            </div>
+            <div id="child3">
+                <div id="child4"></div>
+                <div id="child4"></div>
+            </div>
+        </div>
+        <div id="child2">
+            <div id="child3">
+                <div id="child4"></div>
+                <div id="child4"></div>
+            </div>
+            <div id="child3">
+                <div id="child4"></div>
+                <div id="child4"></div>
+            </div>
+        </div>
+    </div>
+
+    <button id="pre">前序遍历</button>
+    <button id="in">中序遍历</button>
+    <button id="post">后序遍历</button>
+
+    <script type="text/javascript">
+        var pre = document.getElementById('pre');
+        var In = document.getElementById('in');
+        var post = document.getElementById('post');
+        var treeNodes = new Array;
+        var treeRoot = document.getElementById('root');
+        var timer;
+
+        function reset()
+        {
+            treeNodes = [];
+            clearInterval(timer);
+        }
+
+        function preOrder(node)
+        {
+            if(!(node == null))
+            {
+                treeNodes.push(node);
+                preOrder(node.firstElementChild);
+                preOrder(node.lastElementChild);
+            }
+        }
+
+        function inOrder(node)
+        {
+            if(!(node == null))
+            {
+                inOrder(node.firstElementChild);
+                treeNodes.push(node);               
+                inOrder(node.lastElementChild);
+            }
+        }
+
+        function postOrder(node)
+        {
+            if(!(node == null))
+            {   
+                postOrder(node.firstElementChild);
+                postOrder(node.lastElementChild);
+                treeNodes.push(node);
+            }
+        }
+
+        function display()
+        {
+            var i = 0;
+            treeNodes[i].style.backgroundColor = 'blue';
+            timer = setInterval(function(){
+                i++;
+                if(i < treeNodes.length)
+                {
+                    treeNodes[i-1].style.backgroundColor = 'white';
+                    treeNodes[i].style.backgroundColor = 'blue';
+                }
+                else 
+                {
+                    clearInterval(timer);
+                    treeNodes[i-1].style.backgroundColor = 'white';
+                }
+            }, 500);
+        }
+
+        pre.onclick = function(){
+            reset();
+            preOrder(treeRoot);
+            display();
+        }
+        In.onclick = function(){
+            reset();
+            inOrder(treeRoot);
+            display();
+        }
+        post.onclick = function(){
+            reset();
+            postOrder(treeRoot);
+            display();
+        }
+
+    </script>
+</body>
+</html>
