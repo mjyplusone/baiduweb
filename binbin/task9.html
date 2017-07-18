@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFE JavaScript Task 09</title>
+    <style type="text/css">
+        #root, #child2, #child3, #child4, #child5{
+            border: 1px solid black;
+            display: flex;
+        }
+        #root{ 
+            width: 1400px;
+            height: 150px;
+        }
+        #child2{
+            margin: 10px;
+            flex: 1;
+        }
+        #child3{
+            margin: 10px;
+            flex: 1;
+        }
+        #child4{
+            margin: 10px;
+            flex: 1;
+        }
+        #child5{
+            margin: 10px;
+            flex: 1;
+        }
+        .selected{
+            background: green;
+        }
+        .newnode{
+            margin: 10px;
+            border: 1px solid black;
+            display: flex;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        Super
+        <div id="child2">
+            com
+            <div id="child3">
+                Apple
+                <div id="child4">Pear</div>
+                <div id="child4">Pig</div>
+                <div id="child4">Cola</div>
+                <div id="child4">Soccer</div>
+            </div>
+            <div id="child3">
+                Phone
+            </div>
+            <div id="child3">
+                <div id="child4">Book</div>
+                <div id="child4">School</div>
+            </div>
+        </div>
+        <div id="child2">
+            Note
+            <div id="child3">
+                Human
+                <div id="child4">Code</div>
+                <div id="child4">Operate</div>
+                <div id="child4">Man</div>
+            </div>
+            <div id="child3">
+                Program
+                <div id="child4">
+                    Element
+                    <div id="child5">Cat</div>
+                </div>
+                <div id="child4">
+                    Glass
+                </div>
+            </div>
+        </div>
+        <div id="child2">
+            fish
+        </div>
+    </div>
+
+    <div>
+        <button id="pre">前序遍历</button>
+        <button id="post">后序遍历</button>
+
+        <input type="text" id="keyword" >
+        <button id="search">search</button>
+    </div>
+
+    <div>
+        <button id="reset">reset</button>
+        <button id="delete">delete</button>
+        <input type="text" id="addcontent">
+        <button id="add">add</button>
+    </div>
+
+    <script type="text/javascript">
+        var pre = document.getElementById('pre');
+        var In = document.getElementById('in');
+        var post = document.getElementById('post');
+
+        var treeNodes = new Array;
+        var treeRoot = document.getElementById('root');
+
+        var timer;
+
+        var search = document.getElementById('search');
+
+        var clearselect = document.getElementById('reset');
+        var del = document.getElementById('delete');
+        var add = document.getElementById('add');
+
+        function reset()
+        {
+            for(var i = 0; i < treeNodes.length; i++)
+            {
+                treeNodes[i].style.backgroundColor = "white";
+            }
+            treeNodes = [];
+            clearInterval(timer);
+        }
+
+        function preOrder(node)
+        {
+            if(!(node === null))
+            {
+                treeNodes.push(node);
+                for(var i = 0; i < node.childElementCount; i++)
+                {
+                    if(node.children[i] != null)
+                    {
+                        preOrder(node.children[i]);
+                    }
+                }
+            }
+        }
+
+        function postOrder(node)
+        {
+            if(!(node === null))
+            {
+                for(var i = 0; i < node.childElementCount; i++)
+                {
+                    if(node.children[i] != null)
+                    {
+                        postOrder(node.children[i]);
+                    }
+                }
+                treeNodes.push(node);
+            }
+        }
+
+        function display()
+        {
+            var i = 0;
+            treeNodes[i].style.backgroundColor = "blue";
+            timer = setInterval(function(){
+                i++;
+                if(i < treeNodes.length)
+                {
+                    treeNodes[i-1].style.backgroundColor = "white";
+                    treeNodes[i].style.backgroundColor = "blue";
+                }
+                else
+                {
+                    clearInterval(timer);
+                    treeNodes[i-1].style.backgroundColor = "white";
+                }
+            }, 500);
+        }
+
+        //去除字符串前后的空格！！
+        function trim(str)
+        {
+            return str.replace(/(^\s*)|(\s*$)/g, "");   //    /(^\s*)|(\s*$)/
+        }
+
+        function searchkw()
+        {
+            var keyword = document.getElementById('keyword');
+            var kwcontent = keyword.value;
+
+            reset();
+            preOrder(treeRoot);
+
+            var i = 0,
+                flagin = false;
+
+            if(trim(treeNodes[i].childNodes[0].nodeValue) === kwcontent)
+            {
+                treeNodes[i].style.backgroundColor = "red";
+                flagin = true;
+            }                
+            else
+                treeNodes[i].style.backgroundColor = "blue";
+
+            timer = setInterval(function(){
+                i++;
+                if(i < treeNodes.length)
+                {   
+                    if(!(trim(treeNodes[i-1].childNodes[0].nodeValue) === kwcontent))
+                        treeNodes[i-1].style.backgroundColor = "white";
+                    if(trim(treeNodes[i].childNodes[0].nodeValue) === kwcontent)
+                    {
+                        treeNodes[i].style.backgroundColor = "red";
+                        flagin = true;
+                    }     
+                    else
+                        treeNodes[i].style.backgroundColor = "blue";             
+                }
+                else
+                {
+                    clearInterval(timer);
+                    if(!(trim(treeNodes[i-1].childNodes[0].nodeValue) === kwcontent))
+                        treeNodes[i-1].style.backgroundColor = "white";
+                    if(flagin === false) alert('No keyword in tree!');
+                }
+            }, 500);
+        }
+
+        function addClass(element,value) 
+        {
+            if (!element) return false;
+            if (!element.className) 
+            {
+                element.className = value;
+            } 
+            else 
+            {
+                var tempName = element.className;
+                tempName += ' ';
+                tempName += value;
+                element.className = tempName;
+            }
+        }
+
+        function removeClass(element,value) 
+        {
+            if (element.className.indexOf(value) !== -1) 
+            {
+                var tempName = element.className;
+                tempName = tempName.replace(value, '');
+                element.className = tempName;
+            }
+        }
+
+        //选中样式
+        function select(node)
+        {
+            node.style.backgroundColor = 'green';
+            addClass(node, "selected");
+            for(var i = 0; i < node.childElementCount; i++)
+            {
+                if(node.children[i].style.backgroundColor != 'green')
+                    node.children[i].style.backgroundColor = "white";
+            }          
+        }
+
+        //清除select
+        function clear(node)
+        {  
+            node.style.backgroundColor = 'white';
+            removeClass(node, "selected");
+            for(var i = 0; i < node.childElementCount; i++)
+            {
+                node.children[i].style.backgroundColor = 'white';
+                removeClass(node.children[i], "selected");
+                clear(node.children[i]);
+            }          
+        }
+
+        function btndelete()
+        {
+            reset();
+            preOrder(treeRoot);
+            for(var i = 0; i < treeNodes.length; i++)
+            {
+                if(treeNodes[i].className.search('selected') != -1)
+                {
+                    treeNodes[i].parentNode.removeChild(treeNodes[i]);
+                }
+            }
+        }
+
+        function btnadd()
+        {
+            var addcontent = document.getElementById('addcontent').value;
+            reset();
+            preOrder(treeRoot);
+            for(var i = 0; i < treeNodes.length; i++)
+            {
+                if(treeNodes[i].className.search('selected') != -1)
+                {
+                    var newnode = document.createElement('div');
+                    newnode.className = 'newnode';
+                    newnode.innerHTML = addcontent;
+                    treeNodes[i].appendChild(newnode);
+                }
+            }
+        }
+
+        //前序
+        pre.onclick = function(){
+            reset();
+            preOrder(treeRoot);
+            display();
+        }
+
+        //后序
+        post.onclick = function(){
+            reset();
+            postOrder(treeRoot);
+            display();
+        }
+
+        //search
+        search.onclick = function(){
+            // reset();
+            searchkw();
+        }
+
+        clearselect.onclick = function(){
+            clear(treeRoot);
+        }
+
+        //select
+        treeRoot.onclick = function(){
+            select(event.target);
+        }
+
+        del.onclick = function(){
+            btndelete();
+        }
+
+        add.onclick = function(){
+            btnadd();
+        }
+    </script>
+</body>
+</html>
