@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFE yaoyao Task 02</title>
+    <style type="text/css">
+        .content{
+            margin-top: 10px;
+        }
+        form label{
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            width: 70px;
+            font-weight: bold;
+        }
+        form input{
+            width: 300px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            font-size: 20px;
+        }
+        form input[type=button]{
+            background: darkblue;
+            color: white; 
+            border: 1px solid transparent;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+        form{
+            margin-bottom: 10px;
+        }
+        span{
+            display: none;
+            color: gray;
+            margin-left: 75px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" name="form">
+        <div class="content">   
+            <label for="">名称</label>
+            <input type="text" id="username" class="txt">
+            <span class="prompt">必填，长度为4~16个字符</span>
+        </div>
+        <div class="content">
+            <label for="">密码</label>
+            <input type="text" id="password" class="txt">
+            <span class="prompt">必填，长度为4~16个字符</span>
+        </div>
+        <div class="content">
+            <label for="">密码确认</label>
+            <input type="text" id="password2" class="txt">
+            <span class="prompt">必填，长度为4~16个字符</span>
+        </div>
+        <div class="content">
+            <label for="">邮箱</label>
+            <input type="text" id="mail" class="txt">
+            <span class="prompt">必填，长度为4~16个字符</span>
+        </div>
+        <div class="content">
+            <label for="">手机</label>
+            <input type="text" id="phone" class="txt">
+            <span class="prompt">必填，长度为4~16个字符</span>
+        </div>
+        <div class="content">
+            <input type="button" value="验证" onclick="onconfirm()">
+        </div>
+    </form>
+    
+
+    <script type="text/javascript">
+        var ok = [0, 0, 0, 0, 0];
+        
+        window.onload = function(){
+            var txt = document.getElementsByClassName('txt');
+            var prompt = document.getElementsByClassName('prompt');
+
+            for(var i = 0; i < txt.length; i++)
+            {
+                (function(n){
+                    txt[n].onfocus = function(){
+                        console.log(n)
+                        prompt[n].style.display = "block";
+                    }
+                })(i);               
+            }
+
+            for(var i = 0; i < txt.length; i++)
+            {
+                (function(m){
+                    txt[m].onblur = function(){
+                        confirm(m);
+                    }
+                })(i);
+            }
+
+            function countlen(str)          //要按照中文或其他 分类计算字符串长度！！！  charCodeAt函数
+            {
+                var len = 0;
+                for(var i = 0; i < str.length; i++)
+                {
+                    if(str[i].charCodeAt() >= 0 && str[i].charCodeAt() <= 255)
+                        len++;
+                    else len += 2;
+                }
+                return len;
+            }
+
+            function confirm(i)
+            {
+                var nocontent = ["名称不能为空", "密码不能为空", "密码不能为空", "邮箱不能为空", "手机不能为空"];
+                var content = ["名称格式正确", "密码可用", "密码输入一致", "邮箱格式正确", "手机格式正确"];
+                var len = countlen(txt[i].value);
+
+                if(txt[i].value)
+                {
+                    if((i === 0 || i === 1 || i === 2) && (len < 4 || len > 16))
+                    {
+                         txt[i].style.borderColor = "red";
+                         prompt[i].style.color = "red";
+                         prompt[i].innerHTML = "长度不在4~16字符"
+                    }
+                    else if((i === 3) && txt[3].value.indexOf('@') === -1)
+                    {
+                         txt[i].style.borderColor = "red";
+                         prompt[i].style.color = "red";
+                         prompt[i].innerHTML = "邮箱格式错误";
+                    }
+                    else if((i === 4) && (txt[4].value.length != 11 || isNaN(txt[4].value)))
+                    {
+                         txt[i].style.borderColor = "red";
+                         prompt[i].style.color = "red";
+                         prompt[i].innerHTML = "邮箱格式错误";
+                    }
+                    else
+                    {
+                        txt[i].style.borderColor = "green";
+                        prompt[i].innerHTML = content[i];
+                        prompt[i].style.color = "green";
+                        ok[i] = 1;
+                    }
+
+                    if(i===2 && txt[2].value != txt[1].value)
+                    {
+                        txt[i].style.borderColor = "red";
+                        prompt[i].style.color = "red";
+                        prompt[i].innerHTML = "密码输入不一致";
+                    }
+                }
+                else
+                {
+                    txt[i].style.borderColor = "red";
+                    prompt[i].style.color = "red";
+  			        prompt[i].innerHTML = nocontent[i];
+                }
+            }            
+        }
+
+        function onconfirm(){
+             if(ok.indexOf(0) === -1){
+                 alert("提交成功！");
+             }
+             else
+             {
+                 alert("提交失败！");
+             }
+        }
+
+        
+    </script>
+</body>
+</html>

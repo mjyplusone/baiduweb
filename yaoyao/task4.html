@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFE yaoyao Task 04</title>
+    <style type="text/css">
+        #upnum td, #leftnum td{
+            height: 40px;
+            width: 40px;
+            text-align: center;
+        }
+        #leftnum{
+            float: left;
+        }
+        #table{
+            border: 3px solid black;
+            border-collapse: collapse;
+        }
+        #table td{
+            height: 40px;
+            width: 40px;
+            border: 1px solid #676767;
+        }
+        .control{
+            margin-top: 15px;
+            margin-left: 40px;
+        }
+        #go, #init{
+            width: 60px;
+        }
+        .square{
+            width: 40px;
+            height: 40px;
+            background: red;
+        }
+        #squareblue{
+            width: 40px;
+            height: 10px;
+            background: blue;
+            position: absolute;
+            margin-top: -20px;
+        }
+        #squareblueleft{
+            width: 10px;
+            height: 40px;
+            background: blue;
+            position: absolute;
+            margin-top: -20px;
+        }
+        #squareblueright{
+            width: 10px;
+            height: 40px;
+            background: blue;
+            position: absolute;
+            margin-top: -20px;
+            margin-left: 30px;
+        }
+        #squarebluebottom{
+            width: 40px;
+            height: 10px;
+            background: blue;
+            position: absolute;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table id="upnum">
+        <tr>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+    </table>
+    <table id="leftnum">
+        <tr>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>10</td>
+        </tr>
+    </table>
+    <table id="table">
+        <!--js里面生成-->
+    </table>
+
+    <div class="control">
+        <input type="text" id="input">
+        <button id="go">执行</button>
+        <button id="init">初始化</button>
+        <br>
+        <span>Please input "GO" "TUN LEF" "TUN RIG" "TUN BAC"</span>
+    </div>
+
+
+    <script type="text/javascript">
+        var row = 5, col = 5;
+
+        function init()
+        {
+            //网格
+            tablenode = document.getElementById("table");
+            for(var i = 0; i < 10; i++)
+            {
+                var trnode = document.createElement("tr");
+                for(var j = 0; j < 10; j++)
+                {
+                    var tdnode = document.createElement("td");
+                    tdnode.id = "td" + i + j;
+                    trnode.appendChild(tdnode);
+                }
+                tablenode.appendChild(trnode);
+            }
+
+            //方块
+            var square = document.createElement("div");
+            square.id = "squareblue";
+            var node = document.getElementById("td55");
+            node.className = "square";
+            node.appendChild(square);
+
+
+            var btn = document.getElementById("go");
+            var order = document.getElementById("input");
+
+            btn.onclick = function(){
+                if(order.value === "GO") go();
+                else if(order.value === "TUN LEF") left();
+                else if(order.value === "TUN RIG") right();
+                else if(order.value === "TUN BAC") back();
+                else alert("wrong input!");
+            }
+        }
+
+        function go()
+        {
+            var node = document.getElementById("td"+row+col);
+            node.className = "";
+
+            var dir = node.innerHTML.slice(9,-8)
+            node.innerHTML = "";
+
+            var square = document.createElement("div");
+
+            if(dir === "squareblue")
+            {
+                if(row <= 0) alert("bad lyy, can not move more!");
+                else row = row - 1;
+                square.id = "squareblue";
+            }
+            else if(dir === "squareblueleft")
+            {
+                if(col <= 0) alert("bad lyy, can not move more!");
+                else col = col - 1;
+                square.id = "squareblueleft";
+            }
+            else if(dir === "squareblueright")
+            {
+                if(col >= 9) alert("bad lyy, can not move more!");
+                else col = col + 1;
+                square.id = "squareblueright";
+            }
+            else if(dir === "squarebluebottom")
+            {
+                if(row >= 9) alert("bad lyy, can not move more!");
+                else row = row + 1;
+                square.id = "squarebluebottom";
+            }
+
+            var node = document.getElementById("td"+row+col);
+            node.className = "square";
+            node.appendChild(square);
+        }
+
+        function left()
+        {
+            var node = document.getElementById("td"+row+col);
+            var dir = node.innerHTML.slice(9,-8)
+            node.innerHTML = "";
+
+            var square = document.createElement("div");          
+
+            if(dir === "squareblue")
+            {
+                square.id = "squareblueleft";
+            }
+            else if(dir === "squareblueleft")
+            {
+                square.id = "squarebluebottom";
+            }
+            else if(dir === "squareblueright")
+            {
+                square.id = "squareblue";
+            }
+            else if(dir === "squarebluebottom")
+            {
+                square.id = "squareblueright";
+            }
+
+            node.appendChild(square);
+        }
+
+        function right()
+        {
+            var node = document.getElementById("td"+row+col);
+            var dir = node.innerHTML.slice(9,-8)
+            node.innerHTML = "";
+
+            var square = document.createElement("div");          
+
+            if(dir === "squareblue")
+            {
+                square.id = "squareblueright";
+            }
+            else if(dir === "squareblueleft")
+            {
+                square.id = "squareblue";
+            }
+            else if(dir === "squareblueright")
+            {
+                square.id = "squarebluebottom";
+            }
+            else if(dir === "squarebluebottom")
+            {
+                square.id = "squareblueleft";
+            }
+
+            node.appendChild(square);
+        }
+
+        function back()
+        {
+            var node = document.getElementById("td"+row+col);
+            var dir = node.innerHTML.slice(9,-8)
+            node.innerHTML = "";
+
+            var square = document.createElement("div");          
+
+            if(dir === "squareblue")
+            {
+                square.id = "squarebluebottom";
+            }
+            else if(dir === "squareblueleft")
+            {
+                square.id = "squareblueright";
+            }
+            else if(dir === "squareblueright")
+            {
+                square.id = "squareblueleft";
+            }
+            else if(dir === "squarebluebottom")
+            {
+                square.id = "squareblue";
+            }
+
+            node.appendChild(square);
+        }
+        
+        init();
+
+        var init = document.getElementById("init");
+        init.onclick = function(){
+            var node = document.getElementById("td"+row+col);
+            node.className = "";
+            node.innerHTML = "";
+
+            row = 5; col = 5;
+
+            var square = document.createElement("div");
+            square.id = "squareblue";
+            var node = document.getElementById("td"+row+col);
+            node.className = "square";
+            node.appendChild(square);
+        }
+
+    </script>
+</body>
+</html>

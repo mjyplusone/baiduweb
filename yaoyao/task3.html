@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFE yaoyao Task 03</title>
+    <style type="text/css">
+        body{
+            font-size: 14px;
+            font-weight: bold;
+        }
+        form .block{
+            margin: 20px auto;
+            height: 50px;
+            width: 50%;
+        }
+        form .block:first-child{
+            display: flex;
+        }
+        form .block:first-child div{
+            flex: 1;
+            margin: auto 30px;
+        }
+        form select{
+            width: 200px;
+            height: 30px;
+            margin-left: 30px;
+        }
+        form input[type="text"]{
+            width: 400px;
+            height: 30px;
+        }
+        form .block:last-child{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <div class="block">
+            <div>
+                <input type="radio" id="1" name="student" checked="checked">
+                <label for="1">在校生</label>
+            </div>
+            <div>
+                <input type="radio" id="2" name="student">
+                <label for="2">非在校生</label>
+            </div>
+        </div>
+
+        <div class="block">
+            <label for="3">学校</label>
+            <select name="groups" id="3">
+                <option value="北京">北京</option>
+                <option value="上海">上海</option>
+                <option value="南京">南京</option>
+            </select>
+            <select name="groups" id="3">
+                <option value="">北京大学</option>
+                <option value="">清华大学</option>
+            </select>
+        </div>
+
+        <div class="block">
+            <label for="4">就业单位</label>
+            <input type="text" id="4">
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        var input = document.getElementsByTagName("input");
+        var block = document.getElementsByClassName("block");
+        var select = document.getElementsByTagName("select");
+
+        input[0].onchange =  function(){
+            block[1].style.display = "block";
+            block[2].style.display = "none";
+        }
+
+        input[1].onchange =  function(){
+            block[1].style.display = "none";
+            block[2].style.display = "block";
+        }
+
+        select[0].onchange = function(){
+            school(select[0].value);
+        }
+
+        function school(city){
+            select[1].options.length = 0;
+            switch(city)
+            {
+                case "北京":
+                    select[1].add(new Option("北京大学"));
+                    select[1].add(new Option("清华大学"));
+                    break;
+                case "上海":
+                    select[1].add(new Option("上海交通大学"));
+                    select[1].add(new Option("复旦大学"));
+                    break;
+                case "南京":
+                    select[1].add(new Option("南京大学"));
+                    select[1].add(new Option("东南大学"));
+                    break;
+            }
+        }
+
+    </script>
+</body>
+</html>

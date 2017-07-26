@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFE yaoyao Task 04</title>
+    <style type="text/css">
+        body{
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+        #upnum{
+            border-collapse: collapse;
+            border: 3px solid #fff;
+            margin-left: 46px;
+        }
+        #upnum td, #leftnum td{
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            border: 1px solid #fff;
+        }
+        #leftnum{
+            float: left;
+            border-collapse: collapse;
+            border: 3px solid #fff;
+        }
+        #table{
+            border: 3px solid black;
+            border-collapse: collapse;
+        }
+        #table td{
+            height: 40px;
+            width: 40px;
+            border: 1px solid #676767;
+        }
+        .control{
+            margin-top: 15px;
+            margin-left: 40px;
+        }
+        #go, #init{
+            width: 60px;
+        }
+        #square{
+            width: 41px;
+            height: 41px;
+            background: red;
+            position: absolute;
+            top: 49px;
+            left: 49px;
+        }
+        #squareblue{
+            width: 41px;
+            height: 10px;
+            background: blue;
+            position: absolute;
+            /*margin-top: -20px;*/
+        }
+        /*#squareblueleft{
+            width: 10px;
+            height: 40px;
+            background: blue;
+            position: absolute;
+            margin-top: -20px;
+        }
+        #squareblueright{
+            width: 10px;
+            height: 40px;
+            background: blue;
+            position: absolute;
+            margin-top: -20px;
+            margin-left: 30px;
+        }
+        #squarebluebottom{
+            width: 40px;
+            height: 10px;
+            background: blue;
+            position: absolute;
+            margin-top: 10px;
+        }*/
+    </style>
+</head>
+<body>
+    <table id="upnum">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+    </table>
+    <table id="leftnum">
+        <tr>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>10</td>
+        </tr>
+    </table>
+    <table id="table">
+        <!--js里面生成-->
+    </table>
+
+    <div id="square">
+        <div id="squareblue"></div>
+    </div>
+    
+
+    <div class="control">
+        <input type="text" id="input">
+        <button id="go">执行</button>
+        <button id="init">初始化</button>
+        <br>
+        <span>Please input "GO" "TUN LEF" "TUN RIG" "TUN BAC"</span>
+    </div>
+
+
+    <script type="text/javascript">
+        var row = 5, col = 5;
+
+        function init()
+        {
+            //网格
+            tablenode = document.getElementById("table");
+            for(var i = 0; i < 10; i++)
+            {
+                var trnode = document.createElement("tr");
+                for(var j = 0; j < 10; j++)
+                {
+                    var tdnode = document.createElement("td");
+                    tdnode.id = "td" + i + j;
+                    trnode.appendChild(tdnode);
+                }
+                tablenode.appendChild(trnode);
+            }
+
+            var btn = document.getElementById("go");
+            var order = document.getElementById("input");
+
+            btn.onclick = function(){
+                if(order.value === "GO") go();
+                // else if(order.value === "TUN LEF") left();
+                // else if(order.value === "TUN RIG") right();
+                // else if(order.value === "TUN BAC") back();
+                else alert("wrong input!");
+            }
+        }
+
+        function go()
+        {
+            var square = document.getElementById("square");
+            var end = square.offsetTop + 42;
+            var current = 0;
+            var timer = setInterval(function(){
+                if(square.offsetTop < end)
+                {
+                    square.style.top = square.offsetTop + 42/10 + "px";
+                    square.style.transform = "rotate(" + current + "deg)";
+                    current += 9;
+                }               
+                else
+                    clearInterval(timer);       
+            }, 100);
+        }
+
+        init();
+
+
+    </script>
+</body>
+</html>
