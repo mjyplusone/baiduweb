@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFE yaoyao Task 07</title>
+    <style type="text/css">
+        table{
+            border: 2px solid gray;
+            font-size: 14px;
+            border-collapse: collapse;
+        }
+        table th, table td{
+            border: 2px solid gray;
+            width: 140px;
+            height: 30px;
+            text-align: center;
+        }
+        table th{
+            background: #333;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        table th:hover{
+            background: #000;
+        }
+        /*画三角形*/
+        .up{
+            width: 0;
+			height: 0;
+			border-width: 8px 5px;
+			border-style: solid;
+			border-color: #333 #333 #fff;
+			position: absolute;
+			top: -3px;
+			right: 15px;
+			cursor: pointer;
+        }
+        .down{
+            width: 0;
+			height: 0;
+			border-width: 8px 5px;
+			border-style: solid;
+			border-color: #fff #333 #333;
+			position: absolute;
+			bottom: -3px;
+			right: 15px;
+			cursor: pointer;
+        }
+        .edit{
+            background: #fff;
+            border: 1px solid blue;
+            text-align: center;
+        }
+        button{
+            margin-top: 20px;
+            width: 70px;
+            height: 30px;
+        }
+        span{
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <table id="score">
+        <tr>
+            <th>姓名</th>
+            <th id="chinese">语文<div class="up" style="display: none;"></div><div class="down" style="display: none;"></div></th>
+            <th id="maths">数学<div class="up" style="display: none;"></div><div class="down" style="display: none;"></div></th>
+            <th id="english">英语<div class="up" style="display: none;"></div><div class="down" style="display: none;"></div></th>
+            <th id="sumscore">总分<div class="up" style="display: none;"></div><div class="down" style="display: none;"></div></th>
+        </tr>
+        <tr>
+            <td class="name">小明</td>
+            <td class="num">80</td>
+            <td class="num">90</td>
+            <td class="num">70</td>
+            <td class="sum">240</td>
+        </tr>
+        <tr>
+            <td class="name">小红</td>
+            <td class="num">90</td>
+            <td class="num">60</td>
+            <td class="num">90</td>
+            <td class="sum">240</td>
+        </tr>
+        <tr>
+            <td class="name">小亮</td>
+            <td class="num">60</td>
+            <td class="num">100</td>
+            <td class="num">70</td>
+            <td class="sum">230</td>
+        </tr>
+    </table>
+
+    <button id="add">添加行</button>
+    <button id="delete">删除行</button>
+
+    <span>提示：</span>
+    <span>1、点击单元格，直接编辑数据</span>
+    <span>2、点击表头，显示或隐藏排序按钮</span>
+
+    <script type="text/javascript">
+        var tb = document.getElementById("score");
+        tb.onclick = editcell;
+
+        function editcell(event)
+        {   
+            var currentcell;
+
+            //兼容IE下用法
+            if(event === null)
+                currentcell = window.event.srcElement;
+            else
+                currentcell = event.target;
+
+            if(currentcell.tagName.toLowerCase() === "td")
+            {
+                var input = document.createElement("input");
+                input.type = "text";
+                input.className = "edit";
+                input.value = currentcell.innerHTML;
+                currentcell.innerHTML = "";
+                currentcell.appendChild(input);
+                input.focus();
+
+                input.onblur = function(){
+                    //限制分数格里只能填写数字
+                    if(currentcell.className === "num")
+                    {
+                        var num = parseFloat(input.value);
+                        if(input.value === "") currentcell.innerHTML = "";
+                        else if(isNaN(num)) 
+                        {
+                            alert('Please input num!');
+                            currentcell.innerHTML = "";
+                        }
+                        else currentcell.innerHTML = num;
+
+                        //自动计算总分
+                        var sum = 0;
+                        for(var i = 0; i < currentcell.parentNode.getElementsByClassName('num').length; i++)
+                        {
+                            if(currentcell.parentNode.getElementsByClassName('num')[i].innerHTML != "")
+                                sum += parseFloat(currentcell.parentNode.getElementsByClassName('num')[i].innerHTML);
+                        }  
+                        currentcell.parentNode.getElementsByClassName('sum')[0].innerHTML = sum;
+                    }
+                    else if(currentcell.className === "sum")
+                    {
+                        //自动计算总分
+                        var sum = 0;
+                        for(var i = 0; i < currentcell.parentNode.getElementsByClassName('num').length; i++)
+                        {
+                            if(currentcell.parentNode.getElementsByClassName('num')[i] != "")
+                                sum += parseFloat(currentcell.parentNode.getElementsByClassName('num')[i].innerHTML);
+                        }  
+                        currentcell.parentNode.getElementsByClassName('sum')[0].innerHTML = sum;
+                    }
+                    else
+                        currentcell.innerHTML = input.value;
+                }            
+            }
+
+            if(currentcell.tagName.toLowerCase() === "th")
+            {           
+                //此列是否可以排序
+                if(currentcell.id != "")
+                {
+                    var up = currentcell.getElementsByClassName("up")[0];
+                    if(up.style.display === "none") up.style.display = "block";
+                    else up.style.display = "none";
+
+                    up.onclick = sort;
+
+                    var down = currentcell.getElementsByClassName("down")[0];           
+                    if(down.style.display === "none") down.style.display = "block";
+                    else down.style.display = "none";
+
+                    down.onclick = sort;
+                }
+            }
+            
+        }
+
+        // //获取样式函数
+        // function getStyle(obj, attribute)
+        // {
+        //     //currentStyle兼容IE
+        //     return obj.currentStyle ? obj.currentStyle[attribute] : window.getComputedStyle(obj)[attribute];
+        // }
+
+        var add = document.getElementById('add');
+        add.onclick = function(){
+            var tb = document.getElementById('score');
+            var tradd = document.createElement('tr');
+            tb.appendChild(tradd);
+
+            var tdadd = document.createElement('td');
+            tdadd.className = "name";
+            tdadd.innerHTML = "";
+            tradd.appendChild(tdadd);
+            for(var i = 0; i < 3; i++)
+            {
+                var tdadd = document.createElement('td');
+                tdadd.className = "num";
+                tradd.appendChild(tdadd);
+            }
+            var tdadd = document.createElement('td');
+            tdadd.className = "sum";
+            tradd.appendChild(tdadd);
+        }
+
+        var del = document.getElementById('delete');
+        del.onclick = function(){
+            var tb = document.getElementById('score');
+            var trdel = tb.getElementsByTagName('tr');
+            if((trdel.length - 1) === 0)
+            {
+                alert("can not delete more!");
+            }
+            else if(tb.children.length === 1)
+            {
+                tb.children[0].removeChild(trdel[trdel.length - 1]);
+            }   
+            else  tb.removeChild(trdel[trdel.length - 1]);     
+        }
+
+        function sort(event)
+        {
+            var currenttarget;
+
+            if(event === null) currenttarget = window.event.srcElement;
+            else currenttarget = event.target;
+
+            // console.log(currenttarget.parentNode.id);
+            var col;
+            for(var i = 0; i < tb.getElementsByTagName("tr")[0].getElementsByTagName('th').length; i++)
+            {
+                if(tb.getElementsByTagName("tr")[0].getElementsByTagName('th')[i] === currenttarget.parentNode)
+                {
+                    col = i;
+                    console.log(col);
+                    break;                  
+                }
+            }
+
+            //取值到数组中，做好排序前的准备
+            var info = [];
+            for(var i = 0; i < tb.getElementsByTagName('tr').length - 1; i++)
+            {
+                var subinfo = [];
+                for(var j = 0; j < 5; j++)
+                {
+                    subinfo[j] = tb.getElementsByTagName('tr')[i+1].getElementsByTagName('td')[j].innerText;
+                }
+                info[i] = subinfo;
+            }
+            // console.log(info[0][col]);
+
+            if(currenttarget.className === "up")
+            {
+                info.sort(function(a, b){
+                    return a[col] - b[col];
+                });
+                for(var i = 0; i < tb.getElementsByTagName('tr').length - 1; i++)
+                {
+                    for(var j = 0; j < 5; j++)
+                    {
+                       tb.getElementsByTagName('tr')[i+1].getElementsByTagName('td')[j].innerText = info[i][j];
+                    }
+                }
+            }
+            else if(currenttarget.className === "down")
+            {
+                info.sort(function(a, b){
+                    return b[col] - a[col];
+                });
+                for(var i = 0; i < tb.getElementsByTagName('tr').length - 1; i++)
+                {
+                    for(var j = 0; j < 5; j++)
+                    {
+                       tb.getElementsByTagName('tr')[i+1].getElementsByTagName('td')[j].innerText = info[i][j];
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
