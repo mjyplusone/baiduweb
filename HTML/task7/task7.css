@@ -1,0 +1,250 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #000;
+}
+
+.main{
+    width: 1280px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.header{
+    width: 1280px;
+    height: 57px;
+    position: relative;
+}
+
+.header .logo{
+    width: 112px;
+    height: 57px;
+    margin-left: 59px;
+    float: left;
+}
+
+.header .logo img{
+    width: 31px;
+    height: 31px;
+    margin-top: 13px;
+    float: left;
+    margin-right: 11px;
+}
+
+.header .logo p{
+    font-size: 21px;
+    font-family: "黑体";
+    color: #393a3a;
+    overflow: hidden;
+    line-height: 57px;
+}
+
+.header .nav{
+    margin-left: 510px;
+    height: 57px;
+    float: left;
+    /*background: red;*/
+}
+
+.header .nav li{
+    width: 65px;
+    height: 42px;
+    list-style: none;
+    display: inline-block;
+    margin-top: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-right: 24px;
+}
+
+.header .nav li a{
+    font-size: 14px;
+    font-family: "微软雅黑";
+    text-decoration: none;
+    color: #787b83;
+}
+
+.header .nav .selected{
+    border-bottom: 5px solid #e7504d;
+}
+
+.header .nav .selected a{
+    color: #e74f4d;
+}
+
+.header .login img{
+    position: absolute;
+    right: 100px;
+    top: 16px;
+}
+
+.header .login .loginText{
+    position: absolute;
+    right: 67px;
+    top: 16px;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #e9605e;
+}
+
+.newlife{
+    width: 1280px;
+    height: 690px;
+    position: relative;
+}
+
+.newlife .mask{
+    width: 1280px;
+    height: 690px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.newlife button{
+    width: 331px;
+    height: 65px;
+    background: #e74f4d;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    font-family: "微软雅黑";
+    position: absolute;
+    bottom: 198px;
+    left: 126px;
+}
+
+.list{
+    width: 1280px;
+    height: 252px;
+}
+
+.list li{
+    list-style: none;
+    display: block;
+    float: left;
+    width: 320px;
+    height: 252px;
+    text-align: center;
+}
+
+.list li img{
+    margin-top: 47px;
+}
+
+.list li .border{
+    width: 320px;
+    height: 52px;
+    border-left: 2px solid #aaaaaa;
+    margin-top: 47px;
+}
+
+.list li .first{
+    border: none;
+}
+
+.list li .text{
+    margin: 0 auto;   
+    width: 155px;
+    height: 52px;
+    font-size: 14px;
+    font-family: "黑体";
+    color: #767777;
+    line-height: 17px;   
+}
+
+.newworld{
+    width: 1280px;
+    height: 361px;
+    background: #ededec;
+    text-align: center;
+}
+
+.newworld img{
+    margin-top: 89px;
+}
+
+.newworld .text{
+    margin-top: 47px;
+    font-size: 53.59px;
+    font-family: "黑体";
+    color: #b7b6b6;
+}
+
+.search{
+    width: 1280px;
+    height: 341px;
+    position: relative;
+}
+
+.search .mask{
+    width: 1280px;
+    height: 341px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(170, 53, 51, 0.2);
+}
+
+.search .text1{
+    position: absolute;
+    top: 53px;
+    left: 502px;
+    font-size: 21px;
+    font-family: "微软雅黑";
+    color: #fff;
+}
+
+.search .line{
+    position: absolute;
+    width: 31px;
+    height: 2px;
+    background: #fff;
+    top: 87px;
+    left: 601px;
+}
+
+.search .text2{
+    position: absolute;
+    top: 107px;
+    left: 449px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #fff;
+}
+
+.search form select{
+    position: absolute;
+    width: 236px;
+    height: 36px;
+    top: 171px;
+}
+
+.search form #country{   
+    left: 126px;   
+}
+
+.search form #prov{
+    left: 390px;
+}
+
+.search form #city{
+    left: 655px;
+}
+
+.search form button{
+    position: absolute;
+    width: 236px;
+    height: 36px;
+    top: 171px;
+    left: 920px;
+    background: #be4e48;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #fff;
+    border: none;
+}
