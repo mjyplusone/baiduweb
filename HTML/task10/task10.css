@@ -1,0 +1,44 @@
+.main{
+    display: flex;
+    flex-wrap: wrap;   /* 换行 */
+}
+
+.box{
+    width: 150px;
+    border: 1px solid red;
+    margin: 20px;
+}
+
+.box-one{
+    height: 120px;
+}
+
+.box-two{
+    height: 100px;
+}
+
+.box-three{
+    height: 40px;
+}
+
+.box-four{
+    height: 200px;
+    border: 1px solid blue;
+}
+
+@media screen and (min-width: 641px){
+    .main{
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .main{
+        align-items: flex-start;
+    }
+
+    .box-four{
+        order: -1;    /* 顺序，放到第一个，默认是0 */
+    }
+
+}
