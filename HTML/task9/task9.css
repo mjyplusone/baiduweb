@@ -1,0 +1,1168 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: #000;
+}
+
+.header{
+    width: 100%;
+    height: 56px;
+    background: #2189bf;
+    position: relative;
+}
+
+.header #logo{
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+.header #search{
+    position: absolute;
+    top: 14px;
+    right: 156px;
+    width: 313px;
+    height: 28px;
+}
+
+.header #search input{
+    border: 0;
+    width: 313px;
+    height: 28px;
+    background: url(img/search.png);
+    padding: 0 20px 0 40px;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.header #search input:focus{
+    outline: none;
+}
+
+.header #search button{
+    position: absolute;
+    top: 5px;
+    left: 18px;
+    width: 17px;
+    height: 17px;
+    background: url(img/search2.png);
+    border: none;
+}
+
+.header #search button:focus{
+    outline: none;
+}
+
+.header #loginImg{
+    position: absolute;
+    top: 20px;
+    right: 120px;
+    width: 15px;
+    height: 15px;
+}
+
+.header #loginText{
+    position: absolute;
+    top: 23px;
+    right: 92px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #fff;
+    line-height: 12px;
+}
+
+.main{
+    width: 1280px;
+    height: 1210px;
+    margin: 0 auto;
+}
+
+.main .left{
+    width: 260px;
+    height: 1210px;
+    background: #2a2e3d;
+    float: left;
+    position: relative;
+}
+
+.left .title{
+    position: absolute;
+    top: 18px;
+    left: 45px;
+}
+
+.left .title #circleIn{
+    position: absolute;
+    top: 5px;
+    left: 6px;
+    opacity: 0.7;
+}
+
+.left .title p{
+    position: absolute;
+    top: 22px;
+    left: 76px;
+    font-size: 16px;
+    font-family: "黑体";
+    color: #ecebec;
+    margin: 0;
+    line-height: 17px;
+}
+
+.left .count{
+    position: absolute;
+    top: 100px;
+    left: 63px;
+}
+
+.left .count .block{
+    position: absolute;
+}
+
+.left .count .block p{
+    margin: 0;
+    color: #6e8095;
+}
+
+.left .count .block p:first-child{
+    font-size: 16px;
+    font-family: "黑体";
+    line-height: 16px;
+}
+
+.left .count .block p:last-child{
+    font-size: 12px;
+    font-family: "宋体";
+    margin-top: 4px;
+    line-height: 12px;
+}
+
+.left .count #fans{
+    left: 89px;
+}
+
+.left .count span{
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 28px;
+    left: 55px;
+    top: 2px;
+    background: #343848;
+}
+
+.left .list{
+    position: absolute;
+    top: 150px;
+    width: 260px;
+}
+
+.left .list li{
+    display: block;
+    width: 260px;
+    list-style: none;
+}
+
+.left .list a{
+    display: block;
+    width: 260px;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: "黑体";
+    color: #6e8095;
+}
+
+.left .list a:hover{
+    background: #393d4e;
+}
+
+.left .list .list1 a{
+    line-height: 44px;
+}
+
+.left .list .list1 img{
+    margin-left: 45px;
+}
+
+.left .list .list1 span{
+    margin-left: 12px;
+}
+
+.left .list .list1 .selected{
+    background: #393d4e
+}
+
+.left .list .list1 .selected .list1_title{
+    color: #ededef;
+}
+
+.left .list .list1 .selected .list2{
+    display: block;
+}
+
+.left .list .list2{
+    display: none;
+}
+
+.left .list .list2 a{
+    line-height: 30px;
+}
+
+.left .list .list1 .list2 a:hover{
+    color: #ededef;   
+}
+
+.left .list .list2 img{
+    margin-left: 9px;
+}
+
+.left .list .list2 #arrow{
+    margin-left: 69px;
+}
+
+.left .list .list2 span{
+    margin-left: 4px;
+}
+
+.left .list .list2 .selected .list3{
+    display: block;
+}
+
+.left .list .list2 .selected .list2_title{
+    color: #ededef;
+}
+
+.left .list .list2 .selected #arrow{
+    transform: rotate(90deg);
+}
+
+.left .list .list3{
+    display: none;
+}
+
+.left .list .list3 img{
+    margin-left: 101px;
+}
+
+.left .list .list3 span{
+    margin-left: 4px;
+}
+
+.left .list .list3 .selected .list3_title{
+    color: #ededef;
+}
+
+.main .right{
+    width: 1020px;
+    height: 1210px;
+    background: #eeeeed;
+    overflow: hidden;
+    position: relative;
+}
+
+.right .url{
+    width: 1020px;
+    height: 30px;
+    background: #fff;
+    position: relative;
+}
+
+.right .url p{
+    position: absolute;
+    left: 30px;
+    font-size: 12.28px;
+    font-family: "黑体";
+    color: #aaaaaa;
+    line-height: 30px;
+}
+
+.right .url p span{
+    color: #6898c2;
+}
+
+.right .search{
+    width: 891px;
+    height: 86px;
+    position: absolute;
+    top: 49px;
+    left: 59px;
+    box-sizing: border-box;
+    border: 1px solid #dcdee0;
+    background: #fff;
+}
+
+.right .search .introtext{
+    font-size: 12px;
+    font-family: "黑体";
+    color: #aaaaaa;
+    box-sizing: border-box;
+}
+
+.right .search .inputtext{
+    font-size: 12px;
+    font-family: "黑体";
+    color: #323333;
+    border: 1px solid #c2c3c4;
+    box-sizing: border-box;
+}
+
+.right .search #cxx{
+    position: absolute;
+    top: 23px;
+    left: 30px;
+}
+
+.right .search #cxxin{
+    position: absolute;
+    top: 15px;
+    left: 81px;
+    width: 70px;
+    height: 26px;
+}
+
+.right .search #mf1{
+    position: absolute;
+    top: 23px;
+    left: 190px;
+}
+
+.right .search #mf1in{
+    position: absolute;
+    top: 15px;
+    left: 227px;
+    width: 120px;
+    height: 26px;
+}
+
+.right .search #mf2{
+    position: absolute;
+    top: 53px;
+    left: 190px;
+}
+
+.right .search #mf2in{
+    position: absolute;
+    top: 45px;
+    left: 227px;
+    width: 120px;
+    height: 26px;
+}
+
+.right .search img{
+    position: absolute;
+    top: 24px;
+    left: 348px;
+}
+
+.right .search #huan{
+    position: absolute;
+    top: 36px;
+    left: 362px;
+    font-size: 12px;
+    font-family: "黑体";
+    color: #fff;
+    cursor: pointer;
+}
+
+.right .search #rq{
+    position: absolute;
+    top: 23px;
+    left: 410px;
+}
+
+.right .search #rqin{
+    position: absolute;
+    top: 15px;
+    left: 447px;
+    width: 120px;
+    height: 26px;
+    padding: 0 5px;
+}
+
+.right .search #rs{
+    position: absolute;
+    top: 53px;
+    left: 410px;
+}
+
+.right .search #rsin{
+    position: absolute;
+    top: 45px;
+    left: 447px;
+    width: 71px;
+    height: 26px;
+}
+
+.right .search #zhs{
+    position: absolute;
+    top: 23px;
+    left: 583px;
+}
+
+.right .search #zhsin{
+    position: absolute;
+    top: 15px;
+    left: 629px;
+    width: 70px;
+    height: 26px;
+}
+
+.right .search #cjx{
+    position: absolute;
+    top: 53px;
+    left: 533px;
+}
+
+.right .search #cjxin{
+    position: absolute;
+    top: 45px;
+    left: 578px;
+    width: 120px;
+    height: 26px;
+}
+
+.right .search button{
+    position: absolute;
+    top: 31px;
+    right: 111px;
+    width: 51px;
+    height: 26px;
+    border: none;
+    background: #388ac1;
+    font-size: 12px;
+    font-family: "黑体";
+    color: #fff;
+    line-height: 26px;
+    text-align: center;
+}
+
+.right .time{
+    position: absolute;
+    width: 891px;
+    height: 65px;
+    top: 144px;
+    left: 59px;
+}
+
+.right .time div{
+    box-sizing: border-box;
+    border: 1px solid #dcdee0;
+    border-right: 0;
+    border-bottom: 0;
+    background: #fff;
+    float: left;
+}
+
+.right .time .arrowL{
+    width: 31px;
+    height: 65px;
+    text-align: center;
+}
+
+.right .time .arrowL img{
+    margin-top: 24px;
+}
+
+.right .time .timecost{
+    width: 111px;
+    height: 65px;
+    margin-left: 4px;
+    position: relative;
+}
+
+.right .time .timecost:hover{
+    background: #f4f5f6;
+}
+
+.right .time .timecost .up{
+    position: absolute;
+    width: 111px;
+    height: 4px;
+    background: #4388c9;
+    display: none;
+}
+
+.right .time .selected .up{
+    display: block;
+}
+
+.right .time .timecost .tm{
+    position: absolute;
+    top: 16px;
+    left: 31px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #323333;
+    line-height: 9px;
+}
+
+.right .time .timecost .ct{
+    position: absolute;
+    bottom: 11px;
+    left: 41px;
+    font-size: 21px;
+    font-family: "微软雅黑";
+    color: #ec6500;
+    line-height: 17px;
+}
+
+.right .time .timecost img{
+    position: absolute;
+    bottom: 11px;
+    left: 28px;
+}
+
+.right .time .arrowR{
+    width: 31px;
+    height: 65px;
+    margin-left: 4px;
+    text-align: center;
+}
+
+.right .time .arrowR img{
+    margin-top: 24px;
+}
+
+.right .time .history{
+    width: 131px;
+    height: 65px;
+    margin-left: 4px;
+    position: relative;
+}
+
+.right .time .history img{
+    position: absolute;
+    top: 17px;
+    left: 19px;
+}
+
+.right .time .history span{
+    position: absolute;
+    bottom: 24px;
+    left: 63px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #535353;
+    line-height: 13px;
+}
+
+.right .count{
+    position: absolute;
+    top: 231px;
+    left: 59px;
+}
+
+.right .count .counttitle{
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #323333;
+}
+
+.right .count .countdetail{
+    position: absolute;
+    top: 18px;
+    width: 891px;
+    height: 71px;
+}
+
+.right .count .countdetail div{
+    width: 201px;
+    height: 71px;
+    box-sizing: border-box;
+    border: 1px solid #dcdee0;
+    background: #fff;
+    float: left;
+    border-left: 4px solid #fff;
+    position: relative;
+}
+
+.right .count .countdetail .num{
+    position: absolute;
+    top: 23px;
+    left: 13px;
+    font-size: 12px;
+    font-family: "黑体";
+    color: #323333;
+    line-height: 10px;
+}
+
+.right .count .countdetail .cjl{
+    position: absolute;
+    top: 45px;
+    left: 13px;
+    font-size: 10px;
+    font-family: "黑体";
+    color: #aaaaaa;
+    line-height: 10px;
+}
+
+.right .count .countdetail .square{
+    position: absolute;
+    top: 12px;
+    left: 125px;
+    width: 61px;
+    height: 47px;
+}
+
+.right .count .countdetail .green{
+    border-left-color: #44b29e;
+}
+
+.right .count .countdetail .green .square{
+    background: #44b29e;
+}
+
+.right .count .countdetail .blue{
+    margin-left: 29px;
+    border-left-color: #388ac1;
+}
+
+.right .count .countdetail .blue .square{
+    background: #388ac1;
+}
+
+.right .count .countdetail .red{
+    margin-left: 29px;
+    border-left-color: #d04b36;
+}
+
+.right .count .countdetail .red .square{
+    background: #d04b36;
+}
+
+.right .count .countdetail .yellow{
+    margin-left: 29px;
+    border-left-color: #e2cd47;
+}
+
+.right .count .countdetail .yellow .square{
+    background: #e2cd47;
+}
+
+.right .title{
+    position: absolute;
+    height: 41px;
+    background: #f4f5f6;
+    font-size: 12px;
+    font-family: "黑体";
+    color: #aaaaaa;
+    line-height: 41px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e7e8eb;
+    padding: 0 21px;
+}
+
+.right .proLeft{
+    position: absolute;
+    top: 333px;
+    left: 59px;
+    width: 531px;
+    height: 356px;
+    box-sizing: border-box;
+    border: 1px solid #dcdee0;
+    background: #fff;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.right .proLeft .title{
+    width: 531px;
+}
+
+.right .proLeft ul{
+    position: absolute;
+    top: 53px;
+    left: 20px;
+    width: 491px;
+    height: 279px;
+}
+
+.right .proLeft li{
+    list-style: none;
+    float: left;
+    text-align: center;
+}
+
+.right .proLeft input{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    float: left;
+}
+
+.right .proLeft label{
+    position: relative;    /* 设置z-index要在定位元素上！ */
+    display: block;
+    width: 85px;
+    height: 29px;
+    text-align: center;
+    line-height: 29px;
+    background: #ededf0;
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+    margin-right: 4px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #535353;
+}
+
+.right .proLeft .selected{
+    height: 29px;
+    background: #fff;
+    border: 1px solid #cbcccc;
+    border-bottom: none;
+    z-index: 1;
+}
+
+.right .proLeft .selected+.tab{    /* 相邻兄弟选择器 */
+    display: block;
+}
+
+.right .proLeft .tab{
+    position: absolute;
+    top: 29px;
+    left: 0;
+    width: 491px;
+    height: 251px;
+    border: 1px solid #cbcccc;
+    border-radius: 0 5px 5px;
+    display: none;
+}
+
+.right .proLeft .tab table{
+    position: absolute;
+    top: 28px;
+    left: 38px;
+    width: 403px;
+    height: 186px;
+    text-align: center;
+    line-height: 30px;
+    border-collapse: collapse;
+}
+
+.right .proLeft .tab table td{
+    border: 1px solid #ddddde;
+    font-size: 12px;
+    font-family: "宋体";
+    color: #535353;
+}
+
+.right .proRight{
+    position: absolute;
+    top: 333px;
+    left: 599px;
+    width: 351px;
+    height: 356px;
+    box-sizing: border-box;
+    border: 1px solid #dcdee0;
+    background: #fff;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.right .proRight .title{
+    width: 351px;
+}
+
+.right .proRight .content{
+    position: absolute;
+    width: 281px;
+    height: 261px;
+    top: 59px;
+    left: 35px;
+}
+
+.right .proRight .content .up{
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #c3c2c2;
+    line-height: 12px;
+}
+
+.right .proRight .content .down{
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #535353;
+    line-height: 12px;
+}
+
+.right .proRight .content #bt{
+    position: absolute;
+    left: 17px;
+    top: 0;
+}
+
+.right .proRight .content #pro3{
+    position: absolute;
+    top: 20px;
+    left: 17px;
+}
+
+.right .proRight .content .line{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #e7e7e7;
+}
+
+.right .proRight .content #line1{
+    top: 41px;
+}
+
+.right .proRight .content #cost{
+    position: absolute;
+    top: 45px;
+    left: 17px;
+}
+
+.right .proRight .content #cost158{
+    position: absolute;
+    top: 64px;
+    left: 17px;
+}
+
+.right .proRight .content #linevertical{
+    position: absolute;
+    top: 40px;
+    left: 95px;
+    height: 45px;
+    width: 1px;
+    background: #e7e7e7;
+}
+
+.right .proRight .content #fuze{
+    position: absolute;
+    top: 45px;
+    left: 108px;
+}
+
+.right .proRight .content #fuzeren{
+    position: absolute;
+    top: 64px;
+    left: 108px;
+}
+
+.right .proRight .content #line2{
+    top: 85px;
+}
+
+.right .proRight .content #xiangxi{
+    position: absolute;
+    top: 89px;
+    left: 17px;
+}
+
+.right .proRight .content #xiangxi2{
+    position: absolute;
+    top: 108px;
+    left: 17px;
+}
+
+.right .proRight .content #line3{
+    top: 230px;
+}
+
+.right .proRight .content .choose{
+    position: absolute;
+    top: 243px;
+    left: 3px;
+    width: 14px;
+    height: 13px;
+    background: url(img/choose1.png);
+}
+
+.right .proRight .content .clicked{
+    background: url(img/choose2.png);
+}
+
+.right .proRight .content #xieyi{
+    position: absolute;
+    top: 243px;
+    left: 26px;
+}
+
+.right .proRight .content button{
+    position: absolute;
+    top: 235px;
+    right: 0;
+    width: 51px;
+    height: 26px;
+    background: #388ac1;
+    color: #fff;
+    font-size: 12px;
+    font-family: "黑体";
+    border: none;
+    border-radius: 3px;
+}
+
+.right .calendar{
+    position: absolute;
+    width: 351px;
+    height: 356px;
+    top: 698px;
+    left: 59px;
+    box-sizing: border-box;
+    border: 1px solid #dcdee0;
+    background: #fff;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.right .calendar .title{
+    width: 351px;
+}
+
+.right .calendar .input{
+    position: absolute;
+    top: 50px;
+    left: 23px;
+}
+
+.right .calendar .input span{
+    display: block;
+    height: 22px;
+    float: left;
+    margin-right: 6px;
+}
+
+.right .calendar .input select{
+    height: 22px;
+    border: 1px solid #cbcbcb;
+    font-size: 12px;
+    font-family: "黑体";
+    color: #535353;
+    box-sizing: border-box;
+}
+
+.right .calendar .input .year{
+    width: 64px;
+}
+
+.right .calendar .input .month{
+    width: 85px;
+}
+
+.right .calendar .input .date{
+    width: 76px;
+}
+
+.right .calendar .input input{
+    width: 64px;
+    height: 22px;
+    border: 1px solid #cbcbcb;
+    background: #fff;
+    font-size: 12px;
+    font-family: "黑体";
+    color: #535353;
+    box-sizing: border-box;
+}
+
+.right .calendar table{
+    position: absolute;
+    top: 82px;
+    left: 20px;
+    width: 311px;
+}
+
+.right .calendar table tr{
+    height: 43px;
+}
+
+.right .calendar table tr:first-child{
+    height: 30px;
+}
+
+.right .calendar table th{
+    border-top: 1.5px solid #a9cfec;
+    border-bottom: 1.5px solid #e1e1e1;
+    font-size: 12px;
+    font-family: "黑体";
+    color: #535353;
+    line-height: 30px;
+    text-align: center;
+}
+
+.right .calendar table td{
+    font-size: 11.36px;
+    font-family: "黑体";
+    color: #323333;
+    text-align: center;
+}
+
+.right .calendar table td p{
+    line-height: 13px;
+}
+
+.right .calendar table td span{
+    line-height: 12px;
+}
+
+.right .calendar table .jieri span{
+    color: #c9161d;
+}
+
+.right .calendar table tr td:nth-last-child(1) p{
+    color: #c9161d;
+}
+
+.right .calendar table tr td:nth-last-child(2) p{
+    color: #c9161d;
+}
+
+.right .calendar table .checked{
+    background: url(img/checked.png);
+}
+
+
+.right .rank{
+    position: absolute;
+    width: 531px;
+    height: 356px;
+    top: 698px;
+    left: 419px;
+    box-sizing: border-box;
+    border: 1px solid #dcdee0;
+    background: #fff;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.right .rank table{
+    position: absolute;
+    top: 58px;
+    left: 40px;
+    font-size: 12px;
+    font-family: "宋体";
+    color: #535353;
+    border-collapse: collapse;
+}
+
+.right .rank .title{
+    width: 531px;
+}
+
+.right .rank table tr:hover{
+    background: #f3f5f6;
+}
+
+.right .rank table .selected{
+    background: #f3f5f6;
+}
+
+.right .rank table .selected img{
+    display: block;
+}
+
+.right .rank table tr th{
+    font-size: 13px;
+    font-family: "黑体";
+    color: #231815;
+    line-height: 27px;
+    border: 1px solid #cbcbcb;
+}
+
+.right .rank table tr th:nth-child(1){
+    width: 69px;
+}
+
+.right .rank table tr th:nth-child(2){
+    width: 92px;
+}
+
+.right .rank table tr th:nth-child(3){
+    width: 292px;
+}
+
+.right .rank table tr td{
+    font-size: 12px;
+    font-family: "黑体";
+    color: #323333;
+    line-height: 24px;
+    border: 1px solid #cbcbcb;
+    text-align: center;
+    position: relative;
+}
+
+.right .rank table tr:last-child td{
+    border-bottom: none;
+}
+
+.right .rank table .bar{
+    display: block;
+    width: 168px;
+    height: 4px;
+    background: #dcdcdc;
+    position: absolute;
+    top: 10px;
+    left: 105px;
+}
+
+.right .rank table .hottext{
+    position: absolute;
+    left: 36px;
+    top: 6px;
+    line-height: 12px;
+}
+
+.right .rank table .hot{
+    display: block;
+    height: 100%;
+}
+
+.right .rank table .hot-bar1{
+    width: 141px;
+    background: #ed6e52;
+}
+
+.right .rank table .hot-bar2{
+    width: 121px;
+    background: #ef8150;
+}
+
+.right .rank table .hot-bar3{
+    width: 104px;
+    background: #f29f4f;
+}
+
+.right .rank table .hot-gt{
+    background: #7fcbf0;
+}
+
+.right .rank table .hot-bar4{
+    width: 97px;
+}
+
+.right .rank table .hot-bar5{
+    width: 86px;
+}
+
+.right .rank table .hot-bar6{
+    width: 80px;
+}
+
+.right .rank table .hot-bar7{
+    width: 75px;
+}
+
+.right .rank table .hot-bar8{
+    width: 63px;
+}
+
+.right .rank table .hot-bar9{
+    width: 59px;
+}
+
+.right .rank table .hot-bar10{
+    width: 55px;
+}
+
+.right .rank table td img{
+    position: absolute;
+    top: 5px;
+    left: 65px;
+    display: none;
+}
