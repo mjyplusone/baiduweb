@@ -1,0 +1,97 @@
+table{
+    width: 300px;
+    margin: 0 auto;
+}
+
+table thead{
+    background: #000;
+    color: #fff;
+}
+
+table tbody tr:nth-child(odd){
+    background: #fff;
+}
+
+table tbody tr:nth-child(even){
+    background: lightgray;
+}
+
+table tbody tr{
+    color: #000;
+}
+
+table tbody tr:nth-child(-n+3){     /* !!! */
+    color: red;
+}
+
+.input{
+    margin-top: 30px;
+    text-align: center;
+}
+
+input{
+    width: 100px;
+    height: 20px;
+}
+
+input:focus{
+    width: 180px;
+    border: none;
+    box-shadow: 0 0 4px 4px rgba(0,80,192,0.8);
+    transition: width 0.5s linear;
+}
+
+.mask{
+    width: 400px;
+    height: 200px;
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.square{
+    position: absolute;
+    width: 800px;
+    height: 200px;  
+    left: -400px;
+    animation: .5s slider-init linear;
+}
+
+.square .blue{
+    width: 400px;
+    height: 200px;
+    background: blue;
+    float: left;
+}
+
+.square .green{
+    width: 400px;
+    height: 200px;
+    background: green;
+    float: left;
+}
+
+.mask .btn{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    opacity: 0.3;
+    bottom: 0;
+    text-align: center;
+    line-height: 40px;
+    color: red;
+    z-index: 1;
+}
+
+.mask .btn1{
+    right: 90px;
+}
+
+.mask .btn2{
+    right: 45px;
+}
+
+.mask .btn3{
+    right: 0;
+}
